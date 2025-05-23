@@ -3,3 +3,5 @@ numero = int( input())
 for i in range(0, 11):
     resultado = numero * i
     print(numero, "x", i, "=", resultado)
+except ValueError:
+    print("Por favor, digite um número inteiro válido.")
