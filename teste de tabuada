@@ -1,3 +1,4 @@
+try:
 print("Digite um número para ver a tabuada.")
 numero = int( input())
 for i in range(0, 11):
