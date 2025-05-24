@@ -1,0 +1,47 @@
+def pedir_numero(mensagem):
+    while True:
+        try:
+            numero = float(input(mensagem))
+            return numero
+        except ValueError:
+            print("Por favor, digite um número válido.")
+
+def escolher_operacao():
+    print("\nEscolha a operação desejada:")
+    print("[+] Soma")
+    print("[-] Subtração")
+    print("[*] Multiplicação")
+    print("[/] Divisão")
+    
+    operacao = input("Digite o símbolo da operação: ")
+    return operacao if operacao in ['+', '-', '*', '/'] else None
+
+def calcular_tabuada(numero, operacao, limite):
+    print(f"\nTabuada do {numero} com operação '{operacao}' (de 0 até {limite}):\n")
+    
+    for contador in range(int(limite) + 1):
+        valor_tab = contador
+        
+        if operacao == '+':
+            resultado = numero + valor_tab
+        elif operacao == '-':
+            resultado = numero - valor_tab
+        elif operacao == '*':
+            resultado = numero * valor_tab
+        elif operacao == '/':
+            resultado = "indefinido" if valor_tab == 0 else numero / valor_tab
+        
+        print(f"{numero} {operacao} {valor_tab} = {resultado}")
+
+def main():
+    numero = pedir_numero("Digite um número para a tabuada: ")
+    operacao = escolher_operacao()
+    
+    if operacao is None:
+        print("Operação inválida!")
+        return
+    
+    limite = pedir_numero("Até qual número deve ir a tabuada? (Ex: 15): ")
+    calcular_tabuada(numero, operacao, limite)
+
+main()
