@@ -1,8 +1,35 @@
-try:
-    print("Digite um número para ver a tabuada.")
-    numero = int( input())
-    for i in range(0, 11):
-        resultado = numero * i
-        print(numero, "x", i, "=", resultado)
-except ValueError:
-    print("Por favor, digite um número inteiro válido.")
+def pedir_numero():
+    while True:
+        try:
+           return float( input("Digite um números: "))
+        except ValueError:
+            print("Número inválido! Tente novamente.")
+
+def escolher_operacao():
+    print("\nOperações disposiníveis: +, -, *, /")
+    operacao = input("Digite a operação: ")
+    return operacao if operacao in ['+', '-', '*', '/'] else None
+
+def calcular_tabuada(numero, operacao):
+    for i in range(11):
+        if operacao == '+':
+            print(f"{numero} + {i} = {numero + i}")
+        elif operacao == '*':
+            print(f"{numero} * {i} = {numero * i}")
+        elif operacao == '-':
+            print(f"{numero} - {i} = {numero - i}")
+        elif operacao == '/':
+            if i == 0:
+                print(f"{numero} / {i} = indeifnido (divisão por zero)")
+            else:    
+                print(f"{numero} / {i} = {numero / i}")
+
+def main():
+    numero = pedir_numero()
+    operacao = escolher_operacao()
+
+    if operacao:  
+        calcular_tabuada(numero, operacao)  
+    else:
+        print("Operacao inválida!")  
+main()
